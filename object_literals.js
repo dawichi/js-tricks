@@ -28,18 +28,31 @@ calculate(8,2,'divide')  // 4
 	In a real web, we had the need of make a index of "translatable" words,
 	returning the word it it was not considered in our index
 */
-function translate(word) {
-	const wordList = {
-		Manzana: 'Apple',
-		Navegador: 'Browser',
-		Teclado: 'keyboard'
+function translate(lang, word) {
+	// If the lang param is not allowed, returns word
+	const langs = ['es', 'de']
+	if(langs.indexOf(lang) == -1)
+		return word
+
+	const translates = {
+		es: {
+			Apple: 'Manzana',
+			Keyboard: 'Teclado',
+			Browser: 'Navegador'
+		},
+		de: {
+			Apple: 'Apfel',
+			Keyboard: 'Klaviatur',
+			Browser: 'Browser'
+		}
 	}
-	return wordList[word] ?? word
+
+	return translates[lang][word] ?? word
 }
 
 // Returns the translated
-console.log(translate('Manzana'))
-console.log(translate('Navegador'))
-console.log(translate('Teclado'))
+translate('es', 'Apple')     // Manzana ✓
+translate('de', 'Keyboard')  // Klaviatur ✓
 
-console.log(translate('Huawei'))
+translate('pt', 'Browser')   // not found 'pt', returns word
+translate('es', 'Other') // not found 'Other' inside 'es', returns word

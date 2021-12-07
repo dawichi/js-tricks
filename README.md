@@ -1,2 +1,8 @@
-# js-object-literals
- How to manage conditionals with object literals in JS
+# JS-TRICKS
+
+Some info about specific situations in javascript
+
+
+![chrome.png](./chrome.png)
+
+
